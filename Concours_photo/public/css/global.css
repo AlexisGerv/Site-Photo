@@ -1,0 +1,24 @@
+*{
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.vote-stars .star {
+    font-size: 2em;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.vote-stars .star.active,
+.vote-stars .star:hover,
+.vote-stars .star:hover ~ .star {
+    color: gold;
+}
+.vote-stars .star.active {
+    color: gold;
+}
+.vote-message {
+    margin-left: 1em;
+    color: green;
+    font-size: 1em;
+}
