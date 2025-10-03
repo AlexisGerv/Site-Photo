@@ -1,20 +1,16 @@
 <?php
 require('header.php');
+
 ?>
-
-<?php if (isset($_SESSION['error'])): ?>
-    <p class="erreur"><?= ($_SESSION['error']) ?></p>
-    <?php unset($_SESSION['error']); ?>
-<?php endif; ?>
-
-<h2>Importer une nouvelle photo</h2>
 
 <?php if (isset($message))
     echo "<p style='color:green;'>$message</p>"; ?>
 <?php if (isset($erreur))
     echo "<p style='color:red;'>$erreur</p>"; ?>
 
-<form action="../controleurs/posterPhoto.php" method="POST" enctype="multipart/form-data">
+<form action="../controleurs/posterPhoto.php" method="POST" enctype="multipart/form-data" class="form-posterPhoto">
+    <h2>Importer une nouvelle photo</h2>
+
     <label for="titre">Titre :</label>
     <input type="text" name="titre" id="titre" required><br>
 

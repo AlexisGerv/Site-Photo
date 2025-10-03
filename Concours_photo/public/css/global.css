@@ -1,24 +1,335 @@
-*{
-    background-color: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif;
+* {
+  font-family: "Segoe UI", "Arial", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.vote-stars .star {
-    font-size: 2em;
-    color: #ccc;
-    cursor: pointer;
-    transition: color 0.2s;
+body {
+  font-size: 18px;
+  background-color: whitesmoke;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
 }
-.vote-stars .star.active,
-.vote-stars .star:hover,
-.vote-stars .star:hover ~ .star {
-    color: gold;
+
+/* ! Header */
+
+header {
+  background: #2d3e50;
+  color: #fff;
+  padding: 1.5em 0.5em;
+  text-align: center;
+  margin-bottom: 2em;
 }
-.vote-stars .star.active {
-    color: gold;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.3em;
 }
-.vote-message {
-    margin-left: 1em;
-    color: green;
-    font-size: 1em;
+header p {
+  font-size: 1.1em;
+  color: #ddd;
+  margin-top: 0.2em;
+  font-weight: 400;
+}
+
+/* ? Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  margin-top: 0.8em;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4em 0.8em;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+nav a:hover {
+  background-color: #374f67;
+}
+nav a.active {
+  background-color: #374f67;
+  color: #fff;
+}
+nav span {
+  color: #ddd;
+  margin-top: 0.2em;
+  font-weight: 400;
+}
+
+/* général */
+.galerie {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
+}
+
+main,
+.galerie {
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+h2 {
+  font-size: 2.2em;
+  color: #234;
+  margin-bottom: 0.5em;
+  text-align: center;
+  font-weight: 600;
+}
+
+h2 + p {
+  font-size: 1.1em;
+  color: #556;
+  margin-top: 0.3em;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+/* Bloc photo */
+.photo {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(50, 50, 80, 0.07);
+  margin-bottom: 2.5em;
+  padding: 1.5em 1em 1.5em 1em;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+
+.photo:hover {
+  box-shadow: 0 6px 22px rgba(60, 70, 120, 0.15);
+}
+
+.photo img {
+  margin-left: auto;
+  margin-right: auto;
+  width: 98%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 1px 10px rgba(40, 40, 60, 0.07);
+  margin-bottom: 1em;
+}
+
+/* Titres et infos */
+.photo h2 {
+  font-size: 1.35em;
+  color: #234;
+  margin-bottom: 0.2em;
+}
+.photo .auteur {
+  font-size: 0.96em;
+  color: #556;
+  margin-bottom: 1em;
+  font-style: italic;
+}
+.photo .desc {
+  margin-bottom: 0.8em;
+  color: #444;
+}
+.photo .date {
+  font-size: 0.85em;
+  color: #999;
+  margin-bottom: 0.7em;
+}
+
+/* Système de vote */
+
+form div input[type="radio"] {
+  display: none;
+}
+
+.moyenne {
+  font-size: 1.11em;
+  color: #2d3e50;
+  margin-top: 0.3em;
+}
+
+/* Boutons */
+button,
+input[type="submit"] {
+  background: #2d3e50;
+  color: #fff;
+  padding: 0.45em 1.2em;
+  font-size: 1em;
+  border-radius: 22px;
+  border: none;
+  margin-top: 0.7em;
+  font-weight: 500;
+  transition: background 0.17s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: #374f67;
+}
+
+/* Formulaire de posterPhoto */
+.form-posterPhoto {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(50, 50, 80, 0.07);
+  padding: 2em;
+  margin-bottom: 2em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.form-posterPhoto h2 {
+  font-size: 1.4em;
+  color: #234;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.form-posterPhoto label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.form-posterPhoto input[type="text"],
+.form-posterPhoto textarea,
+.form-posterPhoto input[type="file"] {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Formulaire Connexion */
+.form-connexion {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(50, 50, 80, 0.07);
+  padding: 2em;
+  margin-bottom: 2em;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-connexion h2 {
+  font-size: 1.4em;
+  color: #234;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.form-connexion label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.form-connexion input[type="text"],
+.form-connexion input[type="password"] {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Formulaire Inscription */
+
+.form-inscription {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(50, 50, 80, 0.07);
+  padding: 2em;
+  margin-bottom: 2em;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-inscription h2 {
+  font-size: 1.4em;
+  color: #234;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.form-inscription label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+.form-inscription input[type="text"],
+.form-inscription input[type="email"],
+.form-inscription input[type="password"] {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1.2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Animation de zoom */
+.image-cliquable.en-plein-ecran {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+body.flou-fond::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9998;
+}
+
+/* Footer */
+footer {
+  background: #2d3e50;
+  color: #fff;
+  padding: 1.5em 0.5em;
+  text-align: center;
+  margin-top: 2em;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .photo img {
+    max-width: 98vw;
+  }
+  .photo {
+    padding: 1em 0.4em 1em 0.4em;
+  }
+  header {
+    font-size: 1.03em;
+  }
+  main,
+  .galerie {
+    padding: 0 0.5em;
+  }
+  .galerie {
+    grid-template-columns: 1fr;
+    gap: 1.2em;
+  }
+  nav {
+    flex-direction: column;
+    gap: 0.8em;
+  }
+  nav a {
+    padding: 0.4em 0.6em;
+  }
+  nav span {
+    margin-right: 2em;
+    font-style: italic;
+  }
 }

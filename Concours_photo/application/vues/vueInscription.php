@@ -1,11 +1,11 @@
 <?php require('header.php'); ?>
 
-<h2>Inscription</h2>
 
 <?php if (isset($erreur))
     echo "<p style='color:red;'>$erreur</p>"; ?>
 
-<form action="inscription.php" method="POST">
+<form action="inscription.php" method="POST" class="form-inscription">
+    <h2>Inscription</h2>
     <label for="pseudo">Pseudo :</label>
     <input type="text" name="pseudo" required>
 
